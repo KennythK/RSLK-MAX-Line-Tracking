@@ -1,0 +1,405 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.6                     
+******************************************************************************
+>> Linked Fri Dec  2 12:34:56 2022
+
+OUTPUT FILE NAME:   <Lab10_EEL4742.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000105d
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  00001176  0003ee8a  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  0000031a  0000fce6  RW X
+  SRAM_DATA             20000000   00010000  0000031a  0000fce6  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00001178   00001178    r-x
+  00000000    00000000    000000e4   000000e4    r-- .intvecs
+  000000e4    000000e4    00001026   00001026    r-x .text
+  0000110c    0000110c    00000024   00000024    r-- .const
+  00001130    00001130    00000048   00000048    r-- .cinit
+20000000    20000000    0000011b   00000000    rw-
+  20000000    20000000    000000e8   00000000    rw- .vtable
+  200000e8    200000e8    0000001b   00000000    rw- .bss
+  20000104    20000104    00000017   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000e4     
+                  00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
+
+.text      0    000000e4    00001026     
+                  000000e4    000002fc     lab10.obj (.text:configRobotIO)
+                  000003e0    0000025c     lab10.obj (.text:readSensors)
+                  0000063c    00000240     lab10.obj (.text:ledStates)
+                  0000087c    00000194     lab10.obj (.text:configMotors)
+                  00000a10    000000ec     lab10.obj (.text:processSensors)
+                  00000afc    000000cc     lab10.obj (.text:main)
+                  00000bc8    0000009c     lab10.obj (.text:configPWMTimer)
+                  00000c64    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000d00    00000088     lab10.obj (.text:toggleLEDs)
+                  00000d88    00000080     msp432p4xx_driverlib.lib : interrupt.o (.text:Interrupt_enableInterrupt)
+                  00000e08    00000078     system_msp432p401r.obj (.text:SystemInit)
+                  00000e80    00000078     lab10.obj (.text:config432IO)
+                  00000ef8    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000f60    0000005c     msp432p4xx_driverlib.lib : interrupt.o (.text:Interrupt_registerInterrupt)
+                  00000fbc    0000005c     lab10.obj (.text:bumperSwitchesHandler)
+                  00001018    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  0000105c    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00001090    00000024     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_registerInterrupt)
+                  000010b4    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  000010d0    00000016     msp432p4xx_driverlib.lib : timer_a.o (.text:Timer_A_startCounter)
+                  000010e6    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  000010f4    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
+                  00001100    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00001104    00000004                                   : exit.c.obj (.text:abort:abort)
+                  00001108    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
+
+.const     0    0000110c    00000024     
+                  0000110c    0000001c     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_INT)
+                  00001128    00000008                              : interrupt.o (.const:g_pulEnRegs)
+
+.cinit     0    00001130    00000048     
+                  00001130    0000000f     (.cinit..data.load) [load image, compression = lzss]
+                  0000113f    00000001     --HOLE-- [fill = 0]
+                  00001140    0000000c     (__TI_handler_table)
+                  0000114c    00000004     --HOLE-- [fill = 0]
+                  00001150    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001158    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00001160    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.vtable    0    20000000    000000e8     UNINITIALIZED
+                  20000000    000000e8     msp432p4xx_driverlib.lib : interrupt.o (.vtable)
+
+.bss       0    200000e8    0000001b     UNINITIALIZED
+                  200000e8    00000018     (.common:timerPWMConfig)
+                  20000100    00000001     (.common:motorState)
+                  20000101    00000001     (.common:robotState)
+                  20000102    00000001     (.common:sensorState)
+
+.data      0    20000104    00000017     UNINITIALIZED
+                  20000104    0000000f     lab10.obj (.data)
+                  20000113    00000008     lab10.obj (.data:s)
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  2000fe04    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                        code   ro data   rw data
+       ------                        ----   -------   -------
+    .\
+       lab10.obj                     3292   0         100    
+       system_msp432p401r.obj        120    0         0      
+    +--+-----------------------------+------+---------+---------+
+       Total:                        3412   0         100    
+                                                             
+    .\ccs\
+       startup_msp432p401r_ccs.obj   14     228       0      
+    +--+-----------------------------+------+---------+---------+
+       Total:                        14     228       0      
+                                                             
+    C:/ti/ccs1200/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib
+       interrupt.o                   220    8         464    
+       gpio.o                        36     28        0      
+       timer_a.o                     22     0         0      
+    +--+-----------------------------+------+---------+---------+
+       Total:                        278    36        464    
+                                                             
+    C:\ti\ccs1200\ccs\tools\compiler\ti-cgt-arm_20.2.6.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj             156    0         0      
+       copy_decompress_lzss.c.obj    104    0         0      
+       autoinit.c.obj                68     0         0      
+       boot_cortex_m.c.obj           52     0         0      
+       copy_zero_init.c.obj          28     0         0      
+       copy_decompress_none.c.obj    14     0         0      
+       exit.c.obj                    4      0         0      
+       pre_init.c.obj                4      0         0      
+    +--+-----------------------------+------+---------+---------+
+       Total:                        430    0         0      
+                                                             
+       Stack:                        0      0         1024   
+       Linker Generated:             0      67        0      
+    +--+-----------------------------+------+---------+---------+
+       Grand Total:                  4134   331       1588   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001160 records: 3, size/record: 8, table size: 24
+	.data: load addr=00001130, load size=0000000f bytes, run addr=20000104, run size=00000017 bytes, compression=lzss
+	.bss: load addr=00001150, load size=00000008 bytes, run addr=200000e8, run size=0000001b bytes, compression=zero_init
+	.vtable: load addr=00001158, load size=00000008 bytes, run addr=20000000, run size=000000e8 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001140 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_lzss
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00001109  ADC14_IRQHandler              
+00001109  AES256_IRQHandler             
+00001109  BusFault_Handler              
+00001105  C$$EXIT                       
+00001109  COMP_E0_IRQHandler            
+00001109  COMP_E1_IRQHandler            
+00001109  CS_IRQHandler                 
+00001109  DMA_ERR_IRQHandler            
+00001109  DMA_INT0_IRQHandler           
+00001109  DMA_INT1_IRQHandler           
+00001109  DMA_INT2_IRQHandler           
+00001109  DMA_INT3_IRQHandler           
+00001109  DebugMon_Handler              
+00001109  Default_Handler               
+00001109  EUSCIA0_IRQHandler            
+00001109  EUSCIA1_IRQHandler            
+00001109  EUSCIA2_IRQHandler            
+00001109  EUSCIA3_IRQHandler            
+00001109  EUSCIB0_IRQHandler            
+00001109  EUSCIB1_IRQHandler            
+00001109  EUSCIB2_IRQHandler            
+00001109  EUSCIB3_IRQHandler            
+00001109  FLCTL_IRQHandler              
+00001109  FPU_IRQHandler                
+00001091  GPIO_registerInterrupt        
+00001109  HardFault_Handler             
+00000d89  Interrupt_enableInterrupt     
+00000f61  Interrupt_registerInterrupt   
+00001109  MemManage_Handler             
+00001109  NMI_Handler                   
+00001109  PCM_IRQHandler                
+00001109  PORT1_IRQHandler              
+00001109  PORT2_IRQHandler              
+00001109  PORT3_IRQHandler              
+00001109  PORT4_IRQHandler              
+00001109  PORT5_IRQHandler              
+00001109  PORT6_IRQHandler              
+00001109  PSS_IRQHandler                
+00001109  PendSV_Handler                
+00001109  RTC_C_IRQHandler              
+000010f5  Reset_Handler                 
+00001109  SVC_Handler                   
+00001109  SysTick_Handler               
+00000e09  SystemInit                    
+00001109  T32_INT1_IRQHandler           
+00001109  T32_INT2_IRQHandler           
+00001109  T32_INTC_IRQHandler           
+00001109  TA0_0_IRQHandler              
+00001109  TA0_N_IRQHandler              
+00001109  TA1_0_IRQHandler              
+00001109  TA1_N_IRQHandler              
+00001109  TA2_0_IRQHandler              
+00001109  TA2_N_IRQHandler              
+00001109  TA3_0_IRQHandler              
+00001109  TA3_N_IRQHandler              
+000010d1  Timer_A_startCounter          
+00001109  UsageFault_Handler            
+4000480c  WDTCTL_SYM                    
+00001109  WDT_A_IRQHandler              
+20010000  __STACK_END                   
+00000200  __STACK_SIZE                  
+00001160  __TI_CINIT_Base               
+00001178  __TI_CINIT_Limit              
+00001140  __TI_Handler_Table_Base       
+0000114c  __TI_Handler_Table_Limit      
+00001019  __TI_auto_init_nobinit_nopinit
+00000ef9  __TI_decompress_lzss          
+000010e7  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+000010b5  __TI_zero_init_nomemset       
+00000c65  __aeabi_memcpy                
+00000c65  __aeabi_memcpy4               
+00000c65  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+2000fe00  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+0000105d  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00001101  _system_pre_init              
+00001105  abort                         
+ffffffff  binit                         
+00000fbd  bumperSwitchesHandler         
+00000e81  config432IO                   
+0000087d  configMotors                  
+00000bc9  configPWMTimer                
+000000e5  configRobotIO                 
+20000000  g_pfnRAMVectors               
+00000000  interruptVectors              
+0000063d  ledStates                     
+20000108  leftDivider                   
+2000010c  leftDuty                      
+20000104  leftPeriod                    
+20000110  leftSensors                   
+20000112  lostTimer                     
+00000afd  main                          
+00000c65  memcpy                        
+20000100  motorState                    
+00000a11  processSensors                
+000003e1  readSensors                   
+2000010a  rightDivider                  
+2000010e  rightDuty                     
+20000106  rightPeriod                   
+20000111  rightSensors                  
+20000101  robotState                    
+20000113  s                             
+20000102  sensorState                   
+200000e8  timerPWMConfig                
+00000d01  toggleLEDs                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  interruptVectors              
+000000e5  configRobotIO                 
+00000200  __STACK_SIZE                  
+000003e1  readSensors                   
+0000063d  ledStates                     
+0000087d  configMotors                  
+00000a11  processSensors                
+00000afd  main                          
+00000bc9  configPWMTimer                
+00000c65  __aeabi_memcpy                
+00000c65  __aeabi_memcpy4               
+00000c65  __aeabi_memcpy8               
+00000c65  memcpy                        
+00000d01  toggleLEDs                    
+00000d89  Interrupt_enableInterrupt     
+00000e09  SystemInit                    
+00000e81  config432IO                   
+00000ef9  __TI_decompress_lzss          
+00000f61  Interrupt_registerInterrupt   
+00000fbd  bumperSwitchesHandler         
+00001019  __TI_auto_init_nobinit_nopinit
+0000105d  _c_int00_noargs               
+00001091  GPIO_registerInterrupt        
+000010b5  __TI_zero_init_nomemset       
+000010d1  Timer_A_startCounter          
+000010e7  __TI_decompress_none          
+000010f5  Reset_Handler                 
+00001101  _system_pre_init              
+00001105  C$$EXIT                       
+00001105  abort                         
+00001109  ADC14_IRQHandler              
+00001109  AES256_IRQHandler             
+00001109  BusFault_Handler              
+00001109  COMP_E0_IRQHandler            
+00001109  COMP_E1_IRQHandler            
+00001109  CS_IRQHandler                 
+00001109  DMA_ERR_IRQHandler            
+00001109  DMA_INT0_IRQHandler           
+00001109  DMA_INT1_IRQHandler           
+00001109  DMA_INT2_IRQHandler           
+00001109  DMA_INT3_IRQHandler           
+00001109  DebugMon_Handler              
+00001109  Default_Handler               
+00001109  EUSCIA0_IRQHandler            
+00001109  EUSCIA1_IRQHandler            
+00001109  EUSCIA2_IRQHandler            
+00001109  EUSCIA3_IRQHandler            
+00001109  EUSCIB0_IRQHandler            
+00001109  EUSCIB1_IRQHandler            
+00001109  EUSCIB2_IRQHandler            
+00001109  EUSCIB3_IRQHandler            
+00001109  FLCTL_IRQHandler              
+00001109  FPU_IRQHandler                
+00001109  HardFault_Handler             
+00001109  MemManage_Handler             
+00001109  NMI_Handler                   
+00001109  PCM_IRQHandler                
+00001109  PORT1_IRQHandler              
+00001109  PORT2_IRQHandler              
+00001109  PORT3_IRQHandler              
+00001109  PORT4_IRQHandler              
+00001109  PORT5_IRQHandler              
+00001109  PORT6_IRQHandler              
+00001109  PSS_IRQHandler                
+00001109  PendSV_Handler                
+00001109  RTC_C_IRQHandler              
+00001109  SVC_Handler                   
+00001109  SysTick_Handler               
+00001109  T32_INT1_IRQHandler           
+00001109  T32_INT2_IRQHandler           
+00001109  T32_INTC_IRQHandler           
+00001109  TA0_0_IRQHandler              
+00001109  TA0_N_IRQHandler              
+00001109  TA1_0_IRQHandler              
+00001109  TA1_N_IRQHandler              
+00001109  TA2_0_IRQHandler              
+00001109  TA2_N_IRQHandler              
+00001109  TA3_0_IRQHandler              
+00001109  TA3_N_IRQHandler              
+00001109  UsageFault_Handler            
+00001109  WDT_A_IRQHandler              
+00001140  __TI_Handler_Table_Base       
+0000114c  __TI_Handler_Table_Limit      
+00001160  __TI_CINIT_Base               
+00001178  __TI_CINIT_Limit              
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000000  g_pfnRAMVectors               
+200000e8  timerPWMConfig                
+20000100  motorState                    
+20000101  robotState                    
+20000102  sensorState                   
+20000104  leftPeriod                    
+20000106  rightPeriod                   
+20000108  leftDivider                   
+2000010a  rightDivider                  
+2000010c  leftDuty                      
+2000010e  rightDuty                     
+20000110  leftSensors                   
+20000111  rightSensors                  
+20000112  lostTimer                     
+20000113  s                             
+2000fe00  __stack                       
+20010000  __STACK_END                   
+4000480c  WDTCTL_SYM                    
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[114 symbols]
